@@ -1,1 +1,15 @@
-{ "name": "@akremi-khayreddine/ak-agenda", "version": "0.0.0", "peerDependencies": { "@angular/common": "^9.1.0", "@angular/core": "^9.1.0", "tslib": "^1.10.0" }, "repository": { "url": "https://github.com/akremi-khayreddine/ak-agenda.git" }, "publishConfig": { "registry": "https://npm.pkg.github.com/" } }
+{
+  "name": "@akremi-khayreddine/ak-agenda",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^9.1.0",
+    "@angular/core": "^9.1.0",
+    "tslib": "^1.10.0"
+  },
+  "repository": {
+    "url": "https://github.com/akremi-khayreddine/ak-agenda.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  }
+}
