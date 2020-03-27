@@ -1,0 +1,168 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "ak-agenda": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/ak-agenda",
+      "sourceRoot": "projects/ak-agenda/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/ak-agenda",
+            "index": "projects/ak-agenda/src/index.html",
+            "main": "projects/ak-agenda/src/main.ts",
+            "polyfills": "projects/ak-agenda/src/polyfills.ts",
+            "tsConfig": "projects/ak-agenda/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/ak-agenda/src/favicon.ico",
+              "projects/ak-agenda/src/assets"
+            ],
+            "styles": [
+              "projects/ak-agenda/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/ak-agenda/src/environments/environment.ts",
+                  "with": "projects/ak-agenda/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "ak-agenda:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "ak-agenda:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "ak-agenda:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ak-agenda/src/test.ts",
+            "polyfills": "projects/ak-agenda/src/polyfills.ts",
+            "tsConfig": "projects/ak-agenda/tsconfig.spec.json",
+            "karmaConfig": "projects/ak-agenda/karma.conf.js",
+            "assets": [
+              "projects/ak-agenda/src/favicon.ico",
+              "projects/ak-agenda/src/assets"
+            ],
+            "styles": [
+              "projects/ak-agenda/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ak-agenda/tsconfig.app.json",
+              "projects/ak-agenda/tsconfig.spec.json",
+              "projects/ak-agenda/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/ak-agenda/e2e/protractor.conf.js",
+            "devServerTarget": "ak-agenda:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "ak-agenda:serve:production"
+            }
+          }
+        }
+      }
+    },
+    "ak-agenda-lib": {
+      "projectType": "library",
+      "root": "projects/ak-agenda-lib",
+      "sourceRoot": "projects/ak-agenda-lib/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ak-agenda-lib/tsconfig.lib.json",
+            "project": "projects/ak-agenda-lib/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ak-agenda-lib/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ak-agenda-lib/src/test.ts",
+            "tsConfig": "projects/ak-agenda-lib/tsconfig.spec.json",
+            "karmaConfig": "projects/ak-agenda-lib/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ak-agenda-lib/tsconfig.lib.json",
+              "projects/ak-agenda-lib/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }},
+  "defaultProject": "ak-agenda"
+}
